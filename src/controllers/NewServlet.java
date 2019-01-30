@@ -31,27 +31,26 @@ public class NewServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		EntityManager em = DBUtil.createEntityManager();
-		em.getTransaction().begin();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EntityManager em = DBUtil.createEntityManager();
+        em.getTransaction().begin();
 
-		Message m = new Message();
+	    Message m = new Message();
 
-		String title = "taro";
-		m.setTitle(title);
+	    String title = "taro";
+	    m.setTitle(title);
 
-		String content = "hello";
-		m.setContent(content);
+	    String content = "hello";
+	    m.setContent(content);
 
-		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-		m.setCreated_at(currentTime);
-		m.setUpdated_at(currentTime);
+	    Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+	    m.setCreated_at(currentTime);
+	    m.setUpdated_at(currentTime);
 
-		em.persist(m);
-		em.getTransaction().commit();
+	    em.persist(m);
+	    em.getTransaction().commit();
 
-	    response.getWriter().append("Served at: ").append(request.getContextPath());
+	    response.getWriter().append(Integer.valueOf(m.getID()).toString());
 
 	    em.close();
 
