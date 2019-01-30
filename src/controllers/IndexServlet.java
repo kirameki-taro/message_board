@@ -37,8 +37,8 @@ public class IndexServlet extends HttpServlet {
 	    EntityManager em = DBUtil.createEntityManager();
 
 	    List<Message> messages = em.createNamedQuery("getAllMessages", Message.class)
-	                               .getResultList();
-
+                .getResultList();
+	    response.getWriter().append(Integer.valueOf(messages.size()).toString());
 	    em.close();
 
 	    request.setAttribute("messages", messages);

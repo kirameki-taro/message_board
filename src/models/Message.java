@@ -14,11 +14,10 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({
     @NamedQuery(
-            name = "getAllMassages",
+            name = "getAllMessages",
             query = "SELECT m FROM Message AS m ORDER BY m.id DESC"
             )
 })
-
 
 @Table(name = "messages")
 public class Message {
@@ -39,11 +38,11 @@ public class Message {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updated_at;
 
-    public Integer getID(){
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(Integer id) {
         this.id = id;
     }
 
